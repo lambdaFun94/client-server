@@ -71,6 +71,8 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   };
 };
 
+
+
 /**
  * This is the main template. It can have any name as long as it's the default export.
  * The props passed in here are the direct stream document defined by `config`.
@@ -79,13 +81,18 @@ const EntityPage: Template<TemplateRenderProps> = ({
   relativePrefixToRoot,
   path,
   document,
+  queryParams
 }) => {
-  const { name } = document;
+
+  React.useEffect(() => {
+    console.log("useEffect")
+    console.log(queryParams)
+  }, [])
 
   return (
     <>
       <h1>Entity Powered Page</h1>
-      <div>Entity Name: {name}</div>
+      <div>Query Params: {JSON.stringify(queryParams)}</div>
     </>
   );
 };
